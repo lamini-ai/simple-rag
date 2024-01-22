@@ -60,11 +60,13 @@ class RetrievalAugmentedRunner:
 
 def main():
     model = RetrievalAugmentedRunner(dir="data")
+    start = time.time()
     model.train()
+    print("Time taken to build index: ", time.time() - start)
     while True:
         prompt = input("\n\nEnter another investment question (e.g. Have we invested in any generative AI companies in 2023?): ")
         start = time.time()
         print(model(prompt))
-        print("Time taken: ", time.time() - start)
+        print("\nTime taken: ", time.time() - start)
 
 main()
